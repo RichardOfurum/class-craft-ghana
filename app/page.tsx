@@ -619,7 +619,7 @@ export default function Home() {
 						<br />
 						WhatsApp: +233 533 759 759
 						<br />
-						hanzglobalssourcing@gmail.com
+						contact@classcraftghana.com
 					</div>
 				</div>
 			</footer>
