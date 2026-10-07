@@ -1,12 +1,12 @@
 :root {
   --primary: #0000EE;
   --deep: #0000BE;
-  --surface: #F7F7F7;
-  --elev: #DDDDDD;
-  --text: #000;
-  --muted: #6B6B6B;
-  --white: #fff;
-  --line: #DDDDDD;
+  --surface: #1a1a2e;
+  --elev: #252540;
+  --text: #ffffff;
+  --muted: #a0a0b0;
+  --white: #ffffff;
+  --line: #333355;
   --rBtn: 19px;
   --rCard: 16px;
   --rSm: 12px;
@@ -16,6 +16,8 @@
   --d1: .1s;
   --d2: .2s;
   --d3: .5s;
+  --cinematic-brightness: 1.0;
+  --cinematic-contrast: 1.1;
 }
 
 * {
@@ -29,7 +31,7 @@ html {
 body {
   margin: 0;
   font-family: var(--font);
-  background: var(--white);
+  background: var(--surface);
   color: var(--text);
   line-height: 1.33;
   -webkit-font-smoothing: antialiased
@@ -824,6 +826,174 @@ img {
   border: 0
 }
 
+
+
+/* Cinematic Theme */
+.cinematic {
+  background: var(--surface);
+  color: var(--text);
+}
+
+.cinematic .header {
+  background: rgba(26, 26, 46, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.cinematic .topbar {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.cinematic .kv {
+  background: linear-gradient(180deg, rgba(26,26,46,0.95) 0%, rgba(26,26,46,0.85) 60%, rgba(26,26,46,0.95) 100%);
+}
+
+.cinematic .kvBand {
+  background: linear-gradient(180deg, rgba(26,26,46,0.9) 0%, rgba(26,26,46,0.8) 100%);
+}
+
+.cinematic .section {
+  background: rgba(255,255,255,0.03);
+}
+
+.cinematic .gk-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Cinematic scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--primary), #ff6b35, var(--deep));
+  z-index: 99999;
+  transition: width var(--d3) var(--ease);
+}
+
+/* Cinematic scroll effects */
+.cinematic .kvMedia img {
+  transition: transform var(--d3) var(--ease), filter var(--d3);
+}
+
+.cinematic .kvMedia:hover img {
+  transform: scale(1.04);
+  filter: brightness(var(--cinematic-brightness)) contrast(var(--cinematic-contrast));
+}
+
+.cinematic .bandCard {
+  transition: transform var(--d3) var(--ease), box-shadow var(--d3);
+  overflow: hidden;
+}
+
+.cinematic .bandCard img {
+  transition: transform var(--d3) var(--ease);
+}
+
+.cinematic .bandCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.3);
+}
+
+.cinematic .bandCard:hover img {
+  transform: scale(1.06);
+}
+
+/* Parallax effect */
+.cinematic .parallax {
+  overflow: hidden;
+}
+
+.cinematic .parallax .parallax-content {
+  will-change: transform;
+}
+
+.cinematic .parallax .parallax-content img {
+  transition: transform var(--d3) var(--ease);
+}
+
+.cinematic .parallax .parallax-content:hover img {
+  transform: scale(1.05);
+}
+
+/* Fade-in-up animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cinematic .fade-in-up {
+  animation: fadeInUp 0.6s var(--ease) forwards;
+}
+
+.cinematic .fade-in-up-delay {
+  animation-delay: 0.2s;
+  animation-duration: 0.8s;
+}
+
+/* Glow effect for product cards */
+.cinematic .recoCard {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transition: box-shadow var(--d3) var(--ease);
+}
+
+.cinematic .recoCard:hover {
+  box-shadow: 0 0 40px rgba(0, 100, 255, 0.3), 0 0 80px rgba(255, 100, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Scroll wheel parallax */
+.cinematic .kv {
+  scroll-snap-type: y proximity;
+}
+
+.cinematic .kv section {
+  scroll-snap-align: center;
+}
+
+/* Smooth scroll for entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Additional dark theme utilities */
+.cinematic a {
+  color: #60a5fa;
+  transition: color var(--d3);
+}
+
+.cinematic a:hover {
+  color: #93c5fd;
+}
+
+/* Button theme */
+.cinematic .btn {
+  transition: background var(--d3), transform var(--d3);
+}
+
+.cinematic .btn:hover {
+  transform: translateY(-2px);
+}
+
+.cinematic .fab {
+  background: #60a5fa;
+  transition: background var(--d3), transform var(--d3);
+}
+
+.cinematic .fab:hover {
+  background: #93c5fd;
+  transform: translateY(-4px);
+}
+
 @media(max-width:480px) {
   .wrap {
     padding-left: 16px;
@@ -936,4 +1106,78 @@ img {
 
 .kvDots button.on {
   background: var(--text)
+}
+
+/* -------------------------------------------------------------
+   Cinematic dark surfaces - cards/controls whose base style is a
+   white background (they would otherwise render white-on-white
+   under the dark theme).
+   ------------------------------------------------------------- */
+.cinematic .menuBtn,
+.cinematic .heroTabs,
+.cinematic .kvMedia,
+.cinematic .bandCard,
+.cinematic .roundBtn,
+.cinematic .stepCard,
+.cinematic .checkList li,
+.cinematic .form input,
+.cinematic .form select,
+.cinematic .form textarea,
+.cinematic .nav {
+  background: var(--elev);
+}
+
+.cinematic .btn-dark {
+  background: #ffffff;
+  color: #1a1a2e;
+}
+
+.cinematic .btn-dark:hover {
+  background: #dcdcea;
+}
+
+.cinematic .btn-light {
+  background: var(--elev);
+  color: var(--text);
+}
+
+/* -------------------------------------------------------------
+   Scroll-world (scrub engine) - dark theme tokens. The engine
+   ships its defaults inside @layer sw, so these unlayered :root
+   / .sw-root declarations win cleanly (SKILL.md gotchas).
+   ------------------------------------------------------------- */
+:root {
+  --sw-bg: #1a1a2e;
+  --sw-ink: #ffffff;
+  --sw-ink-soft: #a0a0b0;
+  --sw-accent: #60a5fa;
+}
+
+.sw-root {
+  --sw-bg: #1a1a2e;
+  --sw-ink: #ffffff;
+  --sw-ink-soft: #a0a0b0;
+  --sw-accent: #60a5fa;
+  --sw-font-display: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Engine controls that hard-code light-theme contrast */
+.sw-root .sw-btn--primary,
+.sw-root .sw-topcta {
+  color: #1a1a2e;
+}
+
+.sw-root .sw-nav {
+  background: rgba(26, 26, 46, 0.72);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.sw-root .sw-route__label {
+  background: rgba(18, 18, 36, 0.88);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+.worldPage {
+  min-height: 100vh;
+  background: var(--surface);
 }

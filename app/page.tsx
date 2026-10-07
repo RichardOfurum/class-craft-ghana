@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
 	ArrowRight,
 	Check,
@@ -17,68 +18,68 @@ const heroSlides = [
 		tag: "New term collection",
 		title: "Everything your school needs, customized.",
 		desc: "Fabrics, uniforms, Friday wear, jerseys, badges and event cloth — designed around your crest and colours.",
-		img: "/images/badg1.jpg",
+		img: "/images_v2/39.jpg",
 		alt: "Customized school fabric",
 	},
 	{
 		tag: "Uniforms & Friday wear",
 		title: "One identity, worn every day.",
 		desc: "Coordinated uniforms and Friday wear for students and staff, cut and finished for school life.",
-		img: "/images/uniform.jpg",
+		img: "/images_v2/24.jpg",
 		alt: "Custom school uniform",
 	},
 	{
 		tag: "Badges & crests",
 		title: "Details that carry your name.",
 		desc: "Embroidered and printed badges, crests and patches made to match your school artwork.",
-		img: "/images/work-badges.jpg",
+		img: "/images_v2/2.jpg",
 		alt: "School badges and crests",
 	},
 ];
 
 const featureCards = [
-	{ img: "/images/jerseys.jpg", title: "Jerseys & PE Kits" },
-	{ img: "/images/work-uniform.jpg", title: "Uniforms" },
-	{ img: "/images/fabric.jpg", title: "School Fabrics" },
-	{ img: "/images/badges.jpg", title: "Badges & Crests" },
+	{ img: "/images_v2/15.jpg", title: "Jerseys & PE Kits" },
+	{ img: "/images_v2/32.jpg", title: "Uniforms" },
+	{ img: "/images_v2/38.jpg", title: "School Fabrics" },
+	{ img: "/images_v2/18.jpg", title: "Badges & Crests" },
 ];
 
 const fabricTiles = [
-	{ img: "/images/fabric.jpg", title: "School Fabric" },
-	{ img: "/images/hero-fabric-2.jpg", title: "Friday Pattern" },
-	{ img: "/images/hero-fabric-3.jpg", title: "Event Print" },
-	{ img: "/images/work-fabric.jpg", title: "Crest Fabric" },
+	{ img: "/images_v2/38.jpg", title: "School Fabric" },
+	{ img: "/images_v2/5.jpg", title: "Friday Pattern" },
+	{ img: "/images_v2/33.jpg", title: "Event Print" },
+	{ img: "/images_v2/23.jpg", title: "Crest Fabric" },
 ];
 
 const products = [
 	{
 		title: "School Fabrics",
-		img: "/images/fabric.jpg",
+		img: "/images_v2/38.jpg",
 		text: "Custom printed fabrics designed around your school colours, name, crest and pattern.",
 	},
 	{
 		title: "Uniforms & Friday Wear",
-		img: "/images/uniform.jpg",
+		img: "/images_v2/24.jpg",
 		text: "School uniforms, Friday wear and coordinated clothing for students and staff.",
 	},
 	{
 		title: "Jerseys & PE Kits",
-		img: "/images/jerseys.jpg",
+		img: "/images_v2/15.jpg",
 		text: "Customized sports jerseys, PE kits and team wear for school activities.",
 	},
 	{
 		title: "Badges & School Crests",
-		img: "/images/badges.jpg",
+		img: "/images_v2/18.jpg",
 		text: "Embroidered, printed and patch-style school badges and crests.",
 	},
 	{
 		title: "Anniversary & Event Cloth",
-		img: "/images/events.jpg",
+		img: "/images_v2/14.jpg",
 		text: "Custom cloth for anniversaries, celebrations and school events.",
 	},
 	{
 		title: "School Supplies & Branding",
-		img: "/images/supplies.jpg",
+		img: "/images_v2/3.jpg",
 		text: "Books, stationery, branded items and other school identity materials.",
 	},
 ];
@@ -108,42 +109,42 @@ const steps = [
 
 const recommended = [
 	{
-		img: "/images/fabric.jpg",
+		img: "/images_v2/38.jpg",
 		title: "Custom School Fabric (Full Piece)",
 		price: "Request pricing",
 	},
 	{
-		img: "/images/uniform.jpg",
+		img: "/images_v2/24.jpg",
 		title: "Student Uniform Set",
 		price: "Request pricing",
 	},
 	{
-		img: "/images/jerseys.jpg",
+		img: "/images_v2/15.jpg",
 		title: "House Jersey & PE Kit",
 		price: "Request pricing",
 	},
 	{
-		img: "/images/badges.jpg",
+		img: "/images_v2/18.jpg",
 		title: "Embroidered School Badge",
 		price: "Request pricing",
 	},
 	{
-		img: "/images/events.jpg",
+		img: "/images_v2/14.jpg",
 		title: "Anniversary Cloth (Full Piece)",
 		price: "Request pricing",
 	},
 	{
-		img: "/images/supplies.jpg",
+		img: "/images_v2/3.jpg",
 		title: "Branded Exercise Books (Pack)",
 		price: "Request pricing",
 	},
 	{
-		img: "/images/work-fabric.jpg",
+		img: "/images_v2/23.jpg",
 		title: "Staff Friday Fabric",
 		price: "Request pricing",
 	},
 	{
-		img: "/images/work-uniform.jpg",
+		img: "/images_v2/32.jpg",
 		title: "Staff Friday Wear (Sewn)",
 		price: "Request pricing",
 	},
@@ -161,6 +162,7 @@ export default function Home() {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [tab, setTab] = useState(0);
 	const [sent, setSent] = useState(false);
+	const [scrollProgress, setScrollProgress] = useState(0);
 	const recoRef = useRef<HTMLDivElement>(null);
 
 	const goQuote = () => {
@@ -168,6 +170,20 @@ export default function Home() {
 		if (el) el.scrollIntoView({ behavior: "smooth" });
 		setMenuOpen(false);
 	};
+
+	// Cinematic scroll progress bar
+	useEffect(() => {
+		const updateProgress = () => {
+			const scrollTop = window.scrollY;
+			const docHeight =
+				document.documentElement.scrollHeight - window.innerHeight;
+			setScrollProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+		};
+		updateProgress();
+		window.addEventListener("scroll", updateProgress, { passive: true });
+		return () => window.removeEventListener("scroll", updateProgress);
+	}, []);
+
 
 	const submit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -184,7 +200,8 @@ export default function Home() {
 	};
 
 	return (
-		<main>
+		<main className="cinematic">
+			<div className="scroll-progress" style={{ width: scrollProgress + '%' }}></div>
 			<div className="topbar">
 				<div className="wrap">
 					<span>Suppliers for schools across Ghana</span>
@@ -197,7 +214,7 @@ export default function Home() {
 					<a className="brand" href="#top" aria-label="Class Craft Ghana home">
 						<Image
 							className="logoImg"
-							src="/images/logo.jpg"
+							src="/images_v2/1.jpg"
 							alt="Class Craft Ghana"
 							width={44}
 							height={44}
@@ -230,6 +247,9 @@ export default function Home() {
 						<a href="#about" onClick={() => setMenuOpen(false)}>
 							About
 						</a>
+						<Link href="/world" onClick={() => setMenuOpen(false)}>
+							Our World
+						</Link>
 						<button className="btn btn-dark" onClick={goQuote}>
 							Get a Quote
 						</button>
@@ -339,7 +359,7 @@ export default function Home() {
 						</div>
 					</div>
 					<Image
-						src="/images/hero-fabric-3.jpg"
+						src="/images_v2/33.jpg"
 						alt="Printed school fabric"
 						width={800}
 						height={560}
@@ -592,7 +612,7 @@ export default function Home() {
 						<div className="footerBrand">
 							<Image
 								className="logoImg"
-								src="/images/logo.jpg"
+								src="/images_v2/1.jpg"
 								alt="Class Craft Ghana"
 								width={44}
 								height={44}
