@@ -124,7 +124,7 @@ const recommended = [
 		price: "Request pricing",
 	},
 	{
-		img: "/images_v2/18.jpg",
+		img: "/images_v2/11.jpg",
 		title: "Embroidered School Badge",
 		price: "Request pricing",
 	},
@@ -184,7 +184,6 @@ export default function Home() {
 		return () => window.removeEventListener("scroll", updateProgress);
 	}, []);
 
-
 	const submit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setSent(true);
@@ -201,7 +200,10 @@ export default function Home() {
 
 	return (
 		<main className="cinematic">
-			<div className="scroll-progress" style={{ width: scrollProgress + '%' }}></div>
+			<div
+				className="scroll-progress"
+				style={{ width: scrollProgress + "%" }}
+			></div>
 			<div className="topbar">
 				<div className="wrap">
 					<span>Suppliers for schools across Ghana</span>
