@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import Gallary from "../components/Gallary";
 import {
 	ArrowRight,
 	Check,
@@ -243,6 +244,9 @@ export default function Home() {
 						<a href="#products" onClick={() => setMenuOpen(false)}>
 							Products
 						</a>
+						<a href="#gallery" onClick={() => setMenuOpen(false)}>
+							Gallery
+						</a>
 						<a href="#how-it-works" onClick={() => setMenuOpen(false)}>
 							How it works
 						</a>
@@ -437,6 +441,8 @@ export default function Home() {
 					</div>
 				</div>
 			</section>
+
+			<Gallary />
 
 			<section className="section">
 				<div className="wrap">

@@ -1181,3 +1181,562 @@ html {
   min-height: 100vh;
   background: var(--surface);
 }
+
+/* -------------------------------------------------------------
+   Interactive Image Gallery & Lightbox
+   ------------------------------------------------------------- */
+.gallerySection {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding-top: 80px;
+  padding-bottom: 80px;
+  position: relative;
+}
+
+.galleryHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 36px;
+}
+
+.galleryHeaderTop {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.galleryHeaderTop h2 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.galleryHeaderTop p {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+  max-width: 54ch;
+}
+
+.galleryControls {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.galleryTabsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.galleryTabs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.galleryTabBtn {
+  border: 1px solid var(--line);
+  background: var(--elev);
+  color: var(--muted);
+  border-radius: var(--rBtn);
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--d2) var(--ease);
+}
+
+.galleryTabBtn:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.galleryTabBtn.active {
+  background: #fff;
+  color: #1a1a2e;
+  border-color: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.galleryTabCount {
+  display: inline-block;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+}
+
+.galleryTabBtn.active .galleryTabCount {
+  background: rgba(26, 26, 46, 0.12);
+}
+
+.gallerySearchBox {
+  position: relative;
+  min-width: 270px;
+}
+
+.gallerySearchIcon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.gallerySearchInput {
+  width: 100%;
+  background: var(--elev);
+  border: 1px solid var(--line);
+  border-radius: var(--rBtn);
+  padding: 9px 36px 9px 38px;
+  color: #fff;
+  font-size: 13px;
+  outline: none;
+  transition: border-color var(--d2) var(--ease), box-shadow var(--d2) var(--ease);
+}
+
+.gallerySearchInput:focus {
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2);
+}
+
+.gallerySearchClear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.gallerySearchClear:hover {
+  color: #fff;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .galleryGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .galleryGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.galleryCard {
+  background: var(--elev);
+  border: 1px solid var(--line);
+  border-radius: var(--rCard);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--d3) var(--ease), box-shadow var(--d3), border-color var(--d2);
+  position: relative;
+  text-align: left;
+}
+
+.galleryCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 38px rgba(0, 0, 0, 0.35);
+  border-color: rgba(96, 165, 250, 0.5);
+}
+
+.galleryCardMedia {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.galleryCardMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--d3) var(--ease);
+}
+
+.galleryCard:hover .galleryCardMedia img {
+  transform: scale(1.08);
+}
+
+.galleryCardTag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  background: rgba(26, 26, 46, 0.88);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+}
+
+.galleryCardOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.0) 35%, rgba(10, 10, 24, 0.85) 100%);
+  opacity: 0;
+  transition: opacity var(--d2) var(--ease);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 14px;
+}
+
+.galleryCard:hover .galleryCardOverlay {
+  opacity: 1;
+}
+
+.galleryCardZoomBtn {
+  background: #fff;
+  color: #1a1a2e;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(0.85);
+  transition: transform var(--d2) var(--ease);
+}
+
+.galleryCard:hover .galleryCardZoomBtn {
+  transform: scale(1);
+}
+
+.galleryCardInfo {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.galleryCardCategory {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #60a5fa;
+}
+
+.galleryCardTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.galleryCardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.galleryCardNumber {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.galleryCardAction {
+  font-size: 12px;
+  font-weight: 600;
+  color: #60a5fa;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.galleryPagination {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 40px;
+}
+
+.galleryPaginationText {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.galleryEmptyState {
+  text-align: center;
+  padding: 60px 20px;
+  background: var(--elev);
+  border: 1px dashed var(--line);
+  border-radius: var(--rCard);
+  color: var(--muted);
+}
+
+.galleryEmptyState h3 {
+  color: #fff;
+  margin: 0 0 8px;
+  font-size: 18px;
+}
+
+/* -------------------------------------------------------------
+   Lightbox Modal
+   ------------------------------------------------------------- */
+.lightboxBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(10, 10, 20, 0.94);
+  backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn var(--d2) ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightboxModal {
+  position: relative;
+  background: var(--elev);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  max-width: 960px;
+  width: 100%;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.6);
+  animation: scaleUp var(--d2) var(--ease);
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.lightboxTopBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(26, 26, 46, 0.8);
+}
+
+.lightboxCounter {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lightboxCloseBtn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--d2) var(--ease);
+}
+
+.lightboxCloseBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+.lightboxViewArea {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #0d0d1a;
+  min-height: 360px;
+  max-height: 56vh;
+  overflow: hidden;
+}
+
+.lightboxNavBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  background: rgba(26, 26, 46, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--d2) var(--ease);
+}
+
+.lightboxNavBtn:hover {
+  background: #fff;
+  color: #1a1a2e;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.lightboxNavPrev {
+  left: 16px;
+}
+
+.lightboxNavNext {
+  right: 16px;
+}
+
+.lightboxImageWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-height: 54vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.lightboxImageWrap img {
+  max-width: 100%;
+  max-height: 52vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.lightboxBottomBar {
+  padding: 18px 24px;
+  background: var(--elev);
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.lightboxMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  max-width: 600px;
+}
+
+.lightboxMetaTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lightboxMetaCategory {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #60a5fa;
+}
+
+.lightboxMetaTag {
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  color: #e0e0e0;
+}
+
+.lightboxTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.lightboxDesc {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.lightboxActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .lightboxBottomBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .lightboxActions {
+    justify-content: stretch;
+  }
+  .lightboxActions .btn {
+    width: 100%;
+  }
+}
+
