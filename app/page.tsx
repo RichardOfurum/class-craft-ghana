@@ -19,69 +19,69 @@ const heroSlides = [
 		tag: "New term collection",
 		title: "Everything your school needs, customized.",
 		desc: "Fabrics, uniforms, Friday wear, jerseys, badges and event cloth — designed around your crest and colours.",
-		img: "/images_v2/39.jpg",
-		alt: "Customized school fabric",
+		img: "/images_v3/Anniversary%20Cloth.jpg",
+		alt: "Anniversary Cloth",
 	},
 	{
 		tag: "Uniforms & Friday wear",
 		title: "One identity, worn every day.",
 		desc: "Coordinated uniforms and Friday wear for students and staff, cut and finished for school life.",
-		img: "/images_v2/24.jpg",
-		alt: "Custom school uniform",
+		img: "/images_v3/Ceremonial%20Uniforms%20(01100).jpg",
+		alt: "Ceremonial Uniforms",
 	},
 	{
 		tag: "Badges & crests",
 		title: "Details that carry your name.",
 		desc: "Embroidered and printed badges, crests and patches made to match your school artwork.",
-		img: "/images_v2/2.jpg",
-		alt: "School badges and crests",
+		img: "/images_v3/Badges%20(22).jpg",
+		alt: "Badges",
 	},
 ];
 
 const featureCards = [
-	{ img: "/images_v2/15.jpg", title: "Jerseys & PE Kits" },
-	{ img: "/images_v2/32.jpg", title: "Uniforms" },
-	{ img: "/images_v2/38.jpg", title: "School Fabrics" },
-	{ img: "/images_v2/18.jpg", title: "Badges & Crests" },
+	{ img: "/images_v3/Tracksuits%20(555).jpg", title: "Tracksuits" },
+	{ img: "/images_v3/School%20Uniforms_.jpg", title: "School Uniforms" },
+	{ img: "/images_v3/Cloth%20(68).jpg", title: "Cloth" },
+	{ img: "/images_v3/Crest%20(100).jpg", title: "Crest" },
 ];
 
 const fabricTiles = [
-	{ img: "/images_v2/38.jpg", title: "School Fabric" },
-	{ img: "/images_v2/5.jpg", title: "Friday Pattern" },
-	{ img: "/images_v2/33.jpg", title: "Event Print" },
-	{ img: "/images_v2/23.jpg", title: "Crest Fabric" },
+	{ img: "/images_v3/School%20Cloth%20(_5).jpg", title: "School Cloth" },
+	{ img: "/images_v3/Anniversary%20Cloth(009999).jpg", title: "Anniversary Cloth" },
+	{ img: "/images_v3/Ceremonial%20Cloth%20(02223).jpg", title: "Ceremonial Cloth" },
+	{ img: "/images_v3/Denim%20Customization%20.jpg", title: "Denim Customization" },
 ];
 
 const products = [
 	{
-		title: "School Fabrics",
-		img: "/images_v2/38.jpg",
-		text: "Custom printed fabrics designed around your school colours, name, crest and pattern.",
+		title: "Woven",
+		img: "/images_v3/Woven%20.jpg",
+		text: "Custom woven fabrics designed around your school colours, name, crest and pattern.",
 	},
 	{
-		title: "Uniforms & Friday Wear",
-		img: "/images_v2/24.jpg",
-		text: "School uniforms, Friday wear and coordinated clothing for students and staff.",
+		title: "Vest",
+		img: "/images_v3/Vest%20(0008).jpg",
+		text: "School vests and coordinated outerwear for students and staff.",
 	},
 	{
-		title: "Jerseys & PE Kits",
-		img: "/images_v2/15.jpg",
-		text: "Customized sports jerseys, PE kits and team wear for school activities.",
+		title: "Jackets",
+		img: "/images_v3/Jackets%20(909777).jpg",
+		text: "Customized jackets and warm layers for school activities and staff.",
 	},
 	{
-		title: "Badges & School Crests",
-		img: "/images_v2/18.jpg",
+		title: "Badges",
+		img: "/images_v3/Badges%20(777).jpg",
 		text: "Embroidered, printed and patch-style school badges and crests.",
 	},
 	{
-		title: "Anniversary & Event Cloth",
-		img: "/images_v2/14.jpg",
+		title: "Ceremonial Cloth",
+		img: "/images_v3/Ceremonial%20Cloth%20(000887).jpg",
 		text: "Custom cloth for anniversaries, celebrations and school events.",
 	},
 	{
-		title: "School Supplies & Branding",
-		img: "/images_v2/3.jpg",
-		text: "Books, stationery, branded items and other school identity materials.",
+		title: "Custom pens",
+		img: "/images_v3/Custom%20pens%20(3).jpg",
+		text: "Pens, stationery, branded items and other school identity materials.",
 	},
 ];
 
@@ -110,43 +110,43 @@ const steps = [
 
 const recommended = [
 	{
-		img: "/images_v2/38.jpg",
-		title: "Custom School Fabric (Full Piece)",
+		img: "/images_v3/Custom%20Badge_LG.jpg",
+		title: "Custom Badge LG",
 		price: "Request pricing",
 	},
 	{
-		img: "/images_v2/24.jpg",
-		title: "Student Uniform Set",
+		img: "/images_v3/Brooches%20(000008).jpg",
+		title: "Brooches",
 		price: "Request pricing",
 	},
 	{
-		img: "/images_v2/15.jpg",
-		title: "House Jersey & PE Kit",
+		img: "/images_v3/Woven%20Crest%20.jpg",
+		title: "Woven Crest",
 		price: "Request pricing",
 	},
 	{
-		img: "/images_v2/11.jpg",
-		title: "Embroidered School Badge",
+		img: "/images_v3/Keychain%20(00889).jpg",
+		title: "Keychain",
 		price: "Request pricing",
 	},
 	{
-		img: "/images_v2/14.jpg",
-		title: "Anniversary Cloth (Full Piece)",
+		img: "/images_v3/Charms%20Bag%20LoGo_.jpg",
+		title: "Charms Bag LoGo",
 		price: "Request pricing",
 	},
 	{
-		img: "/images_v2/3.jpg",
-		title: "Branded Exercise Books (Pack)",
+		img: "/images_v3/Holders%20(0444)_.jpg",
+		title: "Holders",
 		price: "Request pricing",
 	},
 	{
-		img: "/images_v2/23.jpg",
-		title: "Staff Friday Fabric",
+		img: "/images_v3/Custom%20Sweaters%20(55000).jpg",
+		title: "Custom Sweaters",
 		price: "Request pricing",
 	},
 	{
-		img: "/images_v2/32.jpg",
-		title: "Staff Friday Wear (Sewn)",
+		img: "/images_v3/Belt%20(00777).jpg",
+		title: "Belt",
 		price: "Request pricing",
 	},
 ];
@@ -217,7 +217,7 @@ export default function Home() {
 					<a className="brand" href="#top" aria-label="Class Craft Ghana home">
 						<Image
 							className="logoImg"
-							src="/images_v2/1.jpg"
+							src="/images_v3/Class%20Craft%20Ghana%20Logo.jpg"
 							alt="Class Craft Ghana"
 							width={44}
 							height={44}
@@ -365,8 +365,8 @@ export default function Home() {
 						</div>
 					</div>
 					<Image
-						src="/images_v2/33.jpg"
-						alt="Printed school fabric"
+						src="/images_v3/Ceremonial%20cloth_.jpg"
+						alt="Ceremonial cloth"
 						width={800}
 						height={560}
 					/>
@@ -620,7 +620,7 @@ export default function Home() {
 						<div className="footerBrand">
 							<Image
 								className="logoImg"
-								src="/images_v2/1.jpg"
+								src="/images_v3/Class%20Craft%20Ghana%20Logo.jpg"
 								alt="Class Craft Ghana"
 								width={44}
 								height={44}

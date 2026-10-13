@@ -13,7 +13,7 @@ const worldConfig = {
 		{
 			id: "fabrics",
 			label: "Fabrics",
-			still: "/images_v2/38.jpg",
+			still: "/images_v3/Cloth%20(68).jpg",
 			accent: "#60a5fa",
 			eyebrow: "01 · School Fabrics",
 			title: "Printed around your crest and colours.",
@@ -23,7 +23,7 @@ const worldConfig = {
 		{
 			id: "uniforms",
 			label: "Uniforms",
-			still: "/images_v2/24.jpg",
+			still: "/images_v3/School%20Uniforms_.jpg",
 			accent: "#34d399",
 			eyebrow: "02 · Uniforms & Friday Wear",
 			title: "One identity, worn every day.",
@@ -33,7 +33,7 @@ const worldConfig = {
 		{
 			id: "badges",
 			label: "Badges",
-			still: "/images_v2/18.jpg",
+			still: "/images_v3/Badges%20(22).jpg",
 			accent: "#f59e0b",
 			eyebrow: "03 · Badges & Crests",
 			title: "Details that carry your name.",
@@ -43,7 +43,7 @@ const worldConfig = {
 		{
 			id: "supplies",
 			label: "Supplies",
-			still: "/images_v2/3.jpg",
+			still: "/images_v3/Custom%20pens%20(3).jpg",
 			accent: "#a78bfa",
 			eyebrow: "04 · Supplies & Branding",
 			title: "Everything your school needs.",
